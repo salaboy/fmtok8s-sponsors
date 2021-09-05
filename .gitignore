@@ -4,7 +4,8 @@
 *.dll
 *.so
 *.dylib
-
+fmtok8s-sponsors
+.idea/
 # Test binary, built with `go test -c`
 *.test
 

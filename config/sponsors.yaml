@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sponsors-service-deployment
+  labels:
+    app: sponsors
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sponsors
+  template:
+    metadata:
+      labels:
+        app: sponsors
+    spec:
+      containers:
+      - name:  sponsors
+        image: ko://github.com/salaboy/fmtok8s-sponsors
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sponsors-service
+spec:
+  selector:
+    app: sponsors
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
